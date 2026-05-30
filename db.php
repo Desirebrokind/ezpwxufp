@@ -71,7 +71,7 @@ function head($title = 'Digital Store') {
     echo <<<HTML
 <!doctype html><html lang="ru"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>$title</title><link rel="stylesheet" href="style.css">
+<title>$title</title><link rel="stylesheet" href="style.css?v=2">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect rx='16' width='64' height='64' fill='%23111827'/%3E%3Ctext x='50%25' y='62%25' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='30' fill='%23fff'%3EDS%3C/text%3E%3C/svg%3E">
 </head><body>
 <header class="hdr">
@@ -138,7 +138,7 @@ function admin_head($title = 'Админ-панель') {
     echo <<<HTML
 <!doctype html><html lang="ru"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>$title — Digital Store Admin</title><link rel="stylesheet" href="admin.css">
+<title>$title — Digital Store Admin</title><link rel="stylesheet" href="admin.css?v=2">
 </head><body class="admin"><aside class="sb">
 <div class="sb__brand"><span class="sb__logo">DS</span><div><b>Админка</b><small>$user</small></div></div>
 <nav class="sb__nav">
