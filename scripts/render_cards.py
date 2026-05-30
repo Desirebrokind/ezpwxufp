@@ -74,18 +74,18 @@ def draw_laptop(canvas):
 
 def draw_phone(canvas):
     d = ImageDraw.Draw(canvas)
-    cx, cy = W//2, IMG_CY
-    pw, ph = 210, 420
-    soft_shadow(canvas, cx, cy + ph//2 + 16, 110, 14)
+    cx, cy = W//2, IMG_CY - 20
+    pw, ph = 200, 380
+    soft_shadow(canvas, cx, cy + ph//2 + 16, 105, 14)
     bx1, by1 = cx - pw//2, cy - ph//2
     bx2, by2 = cx + pw//2, cy + ph//2
-    rrect(d, (bx1, by1, bx2, by2), 34, fill=(33, 38, 48), outline=LINE, width=2)
-    rrect(d, (bx1+8, by1+8, bx2-8, by2-8), 28, fill=(22, 26, 34))
-    pill_w, pill_h = 80, 20
-    rrect(d, (cx-pill_w//2, by1+22, cx+pill_w//2, by1+22+pill_h), 10, fill=(8,10,14))
-    d.rectangle((bx2-2, cy-30, bx2+3, cy+30), fill=(60,66,78))
-    d.rectangle((bx1-3, cy-50, bx1+2, cy-20), fill=(60,66,78))
-    d.rectangle((bx1-3, cy-10, bx1+2, cy+20), fill=(60,66,78))
+    rrect(d, (bx1, by1, bx2, by2), 36, fill=(33, 38, 48), outline=LINE, width=2)
+    rrect(d, (bx1+9, by1+9, bx2-9, by2-9), 28, fill=(22, 26, 34))
+    pill_w, pill_h = 78, 20
+    rrect(d, (cx-pill_w//2, by1+24, cx+pill_w//2, by1+24+pill_h), 10, fill=(8,10,14))
+    d.rectangle((bx2-1, cy-26, bx2+4, cy+34), fill=(60,66,78))
+    d.rectangle((bx1-4, cy-46, bx1+1, cy-16), fill=(60,66,78))
+    d.rectangle((bx1-4, cy-6, bx1+1, cy+24), fill=(60,66,78))
 
 def draw_tablet(canvas):
     d = ImageDraw.Draw(canvas)
@@ -112,29 +112,31 @@ def draw_earbuds(canvas):
 
 def draw_headphones(canvas):
     d = ImageDraw.Draw(canvas)
-    cx, cy = W//2, IMG_CY - 30
-    soft_shadow(canvas, cx, cy+200, 250, 18)
-    d.arc((cx-240, cy-220, cx+240, cy+140), start=200, end=340, fill=(33,38,48), width=26)
-    d.arc((cx-225, cy-205, cx+225, cy+125), start=205, end=335, fill=(80,90,108), width=3)
-    for dx in (-200, 200):
-        d.rectangle((cx+dx-7, cy-70, cx+dx+7, cy-10), fill=(60,65,78))
-        d.ellipse((cx+dx-100, cy-20, cx+dx+100, cy+200), fill=(33,38,48), outline=LINE, width=2)
-        d.ellipse((cx+dx-72, cy+12, cx+dx+72, cy+170), fill=(58,64,78))
-        d.ellipse((cx+dx-45, cy+34, cx+dx+45, cy+148), fill=(82,90,108))
-        d.ellipse((cx+dx-5, cy+82, cx+dx+5, cy+92), fill=(180,186,196))
+    cx, cy = W//2, IMG_CY
+    cup_y = cy + 30
+    soft_shadow(canvas, cx, cup_y + 130, 230, 16)
+    d.arc((cx-175, cy-200, cx+175, cy+120), start=180, end=360, fill=(33,38,48), width=30)
+    d.arc((cx-160, cy-185, cx+160, cy+105), start=185, end=355, fill=(78,86,104), width=4)
+    for dx in (-175, 175):
+        d.rectangle((cx+dx-8, cup_y-110, cx+dx+8, cup_y-50), fill=(60,66,80))
+        d.ellipse((cx+dx-92, cup_y-92, cx+dx+92, cup_y+92), fill=(33,38,48), outline=LINE, width=2)
+        d.ellipse((cx+dx-66, cup_y-66, cx+dx+66, cup_y+66), fill=(54,60,74))
+        d.ellipse((cx+dx-40, cup_y-40, cx+dx+40, cup_y+40), fill=(80,88,106))
+        d.ellipse((cx+dx-9, cup_y-9, cx+dx+9, cup_y+9), fill=(150,158,172))
 
 def draw_speaker(canvas):
     d = ImageDraw.Draw(canvas)
     cx, cy = W//2, IMG_CY
-    sw, sh = 500, 220
-    soft_shadow(canvas, cx, cy + sh//2 + 22, 280, 16)
-    rrect(d, (cx-sw//2, cy-sh//2, cx+sw//2, cy+sh//2), 100, fill=(33,38,48), outline=LINE, width=2)
-    for ix in range(-6, 7):
+    sw, sh = 440, 200
+    soft_shadow(canvas, cx, cy + sh//2 + 22, 250, 16)
+    rrect(d, (cx-sw//2, cy-sh//2, cx+sw//2, cy+sh//2), sh//2, fill=(33,38,48), outline=LINE, width=2)
+    rrect(d, (cx-sw//2+14, cy-sh//2+14, cx+sw//2-14, cy+sh//2-14), (sh-28)//2, fill=(40,46,58))
+    for ix in range(-5, 6):
         for iy in range(-2, 3):
-            d.ellipse((cx+ix*32-4, cy+iy*32-4, cx+ix*32+4, cy+iy*32+4), fill=(78,86,100))
-    d.ellipse((cx-sw//2-4, cy-sh//2+12, cx-sw//2+18, cy+sh//2-12), fill=(50,55,68), outline=LINE)
-    d.ellipse((cx+sw//2-18, cy-sh//2+12, cx+sw//2+4, cy+sh//2-12), fill=(50,55,68), outline=LINE)
-    d.arc((cx-sw//2-90, cy-30, cx-sw//2+20, cy+90), start=90, end=270, fill=LINE, width=5)
+            d.ellipse((cx+ix*34-4, cy+iy*34-4, cx+ix*34+4, cy+iy*34+4), fill=(86,94,110))
+    rrect(d, (cx-60, cy-sh//2-16, cx+60, cy-sh//2+8), 11, fill=(50,56,70), outline=LINE)
+    for bx in (-26, 0, 26):
+        d.ellipse((cx+bx-6, cy-sh//2-10, cx+bx+6, cy-sh//2+2), fill=(150,158,172))
 
 def draw_watch(canvas):
     d = ImageDraw.Draw(canvas)
@@ -213,47 +215,23 @@ def draw_camera(canvas):
 def draw_controller(canvas):
     d = ImageDraw.Draw(canvas)
     cx, cy = W//2, IMG_CY
-    body_top = cy - 80
-    body_bot = cy + 40
-    pl = [
-        (cx-90, body_top),
-        (cx-220, body_top+30),
-        (cx-275, body_top+100),
-        (cx-260, body_bot+50),
-        (cx-200, body_bot+100),
-        (cx-110, body_bot+50),
-        (cx-50, body_bot),
-    ]
-    pr = [
-        (cx+90, body_top),
-        (cx+220, body_top+30),
-        (cx+275, body_top+100),
-        (cx+260, body_bot+50),
-        (cx+200, body_bot+100),
-        (cx+110, body_bot+50),
-        (cx+50, body_bot),
-    ]
-    d.polygon(pl, fill=(248,249,251), outline=LINE)
-    d.polygon(pr, fill=(248,249,251), outline=LINE)
-    d.polygon([(cx-90, body_top), (cx+90, body_top), (cx+50, body_bot), (cx-50, body_bot)], fill=(248,249,251))
-    d.line([(cx-90, body_top), (cx+90, body_top)], fill=LINE, width=2)
-    d.line([(cx-50, body_bot), (cx+50, body_bot)], fill=LINE, width=2)
-    rrect(d, (cx-60, body_top+16, cx+60, body_top+46), 8, fill=(220,224,232), outline=LINE)
-    dx0, dy0 = cx-160, body_top+80
-    d.rectangle((dx0-10, dy0-30, dx0+10, dy0+30), fill=(50,55,68))
-    d.rectangle((dx0-30, dy0-10, dx0+30, dy0+10), fill=(50,55,68))
-    bx0, by0 = cx+160, body_top+80
-    btns = [(0, -30, (80,90,180)),
-            (30, 0,  (220,30,40)),
-            (-30, 0, (180,80,160)),
-            (0, 30,  (80,170,200))]
-    for dxb, dyb, col in btns:
+    body = (248, 249, 251)
+    soft_shadow(canvas, cx, cy + 150, 230, 16)
+    rrect(d, (cx-185, cy-30, cx-95, cy+150), 46, fill=body, outline=LINE, width=2)
+    rrect(d, (cx+95, cy-30, cx+185, cy+150), 46, fill=body, outline=LINE, width=2)
+    rrect(d, (cx-160, cy-90, cx+160, cy+70), 50, fill=body, outline=LINE, width=2)
+    rrect(d, (cx-158, cy-12, cx+158, cy+70), 0, fill=body)
+    rrect(d, (cx-42, cy-78, cx+42, cy-40), 8, fill=(214,219,228), outline=LINE)
+    px, py = cx-95, cy-2
+    d.rectangle((px-9, py-26, px+9, py+26), fill=(54,60,74))
+    d.rectangle((px-26, py-9, px+26, py+9), fill=(54,60,74))
+    bx0, by0 = cx+95, cy-2
+    for dxb, dyb, col in [(0,-28,(80,90,180)),(28,0,(220,40,52)),(-28,0,(176,84,160)),(0,28,(70,170,205))]:
         d.ellipse((bx0+dxb-13, by0+dyb-13, bx0+dxb+13, by0+dyb+13), fill=col, outline=(255,255,255), width=2)
-    d.ellipse((cx-95, body_bot+30, cx-35, body_bot+90), fill=(50,55,68))
-    d.ellipse((cx-83, body_bot+42, cx-47, body_bot+78), fill=(33,38,48))
-    d.ellipse((cx+35, body_bot+30, cx+95, body_bot+90), fill=(50,55,68))
-    d.ellipse((cx+47, body_bot+42, cx+83, body_bot+78), fill=(33,38,48))
-    rrect(d, (cx-16, body_bot+8, cx+16, body_bot+26), 4, fill=(140,146,156))
+    for sx in (cx-46, cx+46):
+        d.ellipse((sx-32, cy+44, sx+32, cy+108), fill=(50,56,70), outline=LINE)
+        d.ellipse((sx-22, cy+54, sx+22, cy+98), fill=(28,32,42))
+    rrect(d, (cx-14, cy+6, cx+14, cy+26), 4, fill=(150,158,172))
 
 DRAWERS = {
     "laptop":   draw_laptop,
